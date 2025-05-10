@@ -2,14 +2,16 @@
 
 use App\Http\Controllers\ProduksiController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BibitController;
 use App\Http\Controllers\PakanController;
 use App\Http\Controllers\PanenController;
 
 Route::get('/', function () {
-    return view('home');
+    return view('dashboard');
 });
 
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 // Rute Produksi
 Route::get('/produksi', [ProduksiController::class, 'index'])->name('produksi');
 
@@ -27,7 +29,7 @@ Route::delete('/pakan/{id}', [PakanController::class, 'destroy'])->name('pakan.d
 
 // Rute Panen
 Route::post('/panen/store', [PanenController::class, 'store'])->name('panen.store');
-Route::get('/panen/{panen}/edit', [PanenController::class, 'edit'])->name('panen.edit');
-Route::put('/panen/{panen}', [PanenController::class, 'update'])->name('panen.update');
+Route::get('/panen/{id}/edit', [PanenController::class, 'edit'])->name('panen.edit');
+Route::put('/panen/{id}', [PanenController::class, 'update'])->name('panen.update');
 Route::delete('/panen/{id}', [PanenController::class, 'destroy'])->name('panen.destroy');
 

@@ -17,26 +17,6 @@ class ProduksiController extends Controller
 
         return view('produksi', compact('dataBibit', 'dataPakan', 'dataPanen'));
     }
-    // Fungsi untuk menghapus data bibit
-    public function destroyBibit($id)
-    {
-        Bibit::destroy($id);
-        return redirect()->back()->with('success', 'Data bibit berhasil dihapus.');
-    }
-
-    // Fungsi untuk menghapus data pakan
-    public function destroyPakan($id)
-    {
-        Pakan::destroy($id);
-        return redirect()->back()->with('success', 'Data pakan berhasil dihapus.');
-    }
-
-    // Fungsi untuk menghapus data panen
-    public function destroyPanen($id)
-    {
-        Panen::destroy($id);
-        return redirect()->back()->with('success', 'Data panen berhasil dihapus.');
-    }
 
 
 }

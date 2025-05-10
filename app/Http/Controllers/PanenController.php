@@ -37,23 +37,24 @@ class PanenController extends Controller
             ->with('success', 'Data panen berhasil dihapus!');
     }
 
-    public function edit($id)
-    {
-        try {
-            $panen = Panen::findOrFail($id);
+public function edit($id)
+{
+    try {
+        $panen = Panen::findOrFail($id);
 
-            if (request()->ajax()) {
-                return view('components.produksi.inputs.panen-edit', compact('panen'));
-            }
-
-            return view('components.produksi.inputs.panen-edit', compact('panen'));
-        } catch (\Exception $e) {
-            if (request()->ajax()) {
-                return response()->json(['error' => 'Data not found'], 404);
-            }
-            abort(404);
+        // Untuk request AJAX, kembalikan hanya konten form
+        if (request()->ajax()) {
+            return view('components.produksi.inputs.panen-edit', compact('panen'))->render();
         }
+
+        return view('components.produksi.inputs.panen-edit', compact('panen'));
+    } catch (\Exception $e) {
+        if (request()->ajax()) {
+            return response()->json(['error' => 'Data not found'], 404);
+        }
+        abort(404);
     }
+}
 
     public function update(Request $request, $id)
     {

@@ -4,11 +4,6 @@
     <div class="relative border-b border-gray-200">
         <div class="flex justify-center items-center py-6 px-4">
             <img src="{{ asset('images/tanpa_bg.png') }}" alt="Logo" class="h-20">
-            <button id="closeSidebar" class="md:hidden absolute right-4 text-gray-500 hover:text-gray-700">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-            </button>
         </div>
     </div>
 
@@ -132,7 +127,7 @@
 
         // Check initial state based on screen size
         const checkInitialState = () => {
-            if (window.innerWidth >= 768) { 
+            if (window.innerWidth >= 768) {
                 updateSidebarState(true);
             } else {
                 updateSidebarState(false);
