@@ -33,14 +33,12 @@
                 @include('components.produksi.tables.PanenTable', ['panens' => $dataPanen])
             </div>
         </div>
-
-        <!-- Modal Container -->
-        <div id="editModalContainer"></div>
     </div>
 
+    <!-- Script untuk membuat modal dan fungsinya tersedia global -->
     <script>
         // Simpan state tab aktif di sessionStorage
-        let activeTab = sessionStorage.getItem('activeProduksiTab');
+        let activeTab = sessionStorage.getItem('activeProduksiTab') || 'bibit';
 
         // Fungsi untuk menampilkan tabel yang dipilih
         function showTable(tableType) {
@@ -86,7 +84,7 @@
 
         // Inisialisasi saat halaman dimuat
         document.addEventListener('DOMContentLoaded', function() {
-            // Tampilkan tab yang aktif sebelumnya
+            // Tampilkan tab yang aktif sebelumnya atau default ke 'bibit'
             showTable(activeTab);
 
             // Penyesuaian layout
@@ -107,4 +105,9 @@
                 });
         }
     </script>
+
+    <!-- Pastikan script modal-table.js dimuat pada halaman ini -->
+    @push('scripts')
+        @vite('resources/js/components/produksi/modal-table.js')
+    @endpush
 @endsection

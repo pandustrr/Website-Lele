@@ -10,7 +10,7 @@ class PanenController extends Controller
     // Menampilkan form input
     public function create()
     {
-        return view('components.produksi.inputs.panen-edit');
+        return view('components.produksi.modals.panen-edit');
     }
 
     // Menyimpan data baru
@@ -37,24 +37,11 @@ class PanenController extends Controller
             ->with('success', 'Data panen berhasil dihapus!');
     }
 
-public function edit($id)
-{
-    try {
+    public function edit($id)
+    {
         $panen = Panen::findOrFail($id);
-
-        // Untuk request AJAX, kembalikan hanya konten form
-        if (request()->ajax()) {
-            return view('components.produksi.inputs.panen-edit', compact('panen'))->render();
-        }
-
-        return view('components.produksi.inputs.panen-edit', compact('panen'));
-    } catch (\Exception $e) {
-        if (request()->ajax()) {
-            return response()->json(['error' => 'Data not found'], 404);
-        }
-        abort(404);
+        return view('components.produksi.modals.panen-edit', compact('panen'));
     }
-}
 
     public function update(Request $request, $id)
     {

@@ -30,6 +30,6 @@ Route::delete('/pakan/{id}', [PakanController::class, 'destroy'])->name('pakan.d
 // Rute Panen
 Route::post('/panen/store', [PanenController::class, 'store'])->name('panen.store');
 Route::get('/panen/{id}/edit', [PanenController::class, 'edit'])->name('panen.edit');
-Route::put('/panen/{id}', [PanenController::class, 'update'])->name('panen.update');
+    Route::put('/panen/{id}', [PanenController::class, 'update'])->name('panen.update');
 Route::delete('/panen/{id}', [PanenController::class, 'destroy'])->name('panen.destroy');
 

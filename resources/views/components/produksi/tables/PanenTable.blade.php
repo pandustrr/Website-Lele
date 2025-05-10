@@ -81,7 +81,6 @@
 </div>
 
 <div id="editModalContainer"></div>
-
 @push('scripts')
     @vite('resources/js/components/produksi/modal-table.js')
 @endpush

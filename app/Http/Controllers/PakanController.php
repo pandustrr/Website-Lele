@@ -10,7 +10,7 @@ class PakanController extends Controller
     // Menampilkan form input
     public function create()
     {
-        return view('components.produksi.inputs.panen-edit');
+        return view('components.produksi.modals.pakan-edit');
     }
 
     // Menyimpan data baru
@@ -42,7 +42,7 @@ class PakanController extends Controller
     public function edit($id)
     {
         $pakan = Pakan::findOrFail($id);
-        return view('components.produksi.inputs.pakan-edit', compact('pakan'));
+        return view('components.produksi.modals.pakan-edit', compact('pakan'));
     }
 
     // Update data

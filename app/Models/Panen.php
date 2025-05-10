@@ -9,6 +9,12 @@ class Panen extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['tanggal', 'kuantitas'];
-    protected $dates = ['tanggal'];
+    protected $table = 'panens'; // Pastikan sesuai nama tabel di database
+
+    protected $fillable = [
+        'tanggal',
+        'kuantitas',
+    ];
+
+    protected $dates = ['tanggal']; // Jika menggunakan format date
 }

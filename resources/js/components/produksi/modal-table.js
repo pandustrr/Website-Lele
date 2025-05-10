@@ -1,28 +1,36 @@
+// modal-table.js - Modifikasi
+
 /**
  * Fungsi untuk membuka modal edit dengan pengecekan tipe
  * @param {string} url - URL endpoint
  * @param {string} type - Jenis data (bibit/pakan/panen)
  */
 function openEditModal(url, type) {
+    // Tampilkan logging untuk debugging
+    console.log(`Membuka modal edit untuk ${type} dengan URL: ${url}`);
+
     // Tampilkan loading indicator
     document.body.style.cursor = "wait";
 
     fetch(url, {
         headers: {
-            Accept: "text/html", // Pastikan meminta response HTML
+            Accept: "text/html",
             "X-Requested-With": "XMLHttpRequest",
         },
     })
         .then((response) => {
+            console.log("Status respons:", response.status);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             return response.text();
         })
         .then((html) => {
+            console.log("HTML diterima, panjang:", html.length);
+
             // Periksa jika response kosong atau tidak valid
             if (!html || html.trim() === "") {
-                throw new Error("Empty response from server");
+                throw new Error("Response kosong dari server");
             }
 
             // Hapus modal yang mungkin masih ada
@@ -42,7 +50,9 @@ function openEditModal(url, type) {
             modalContent.innerHTML = html;
             modalOverlay.appendChild(modalContent);
 
+            // Tambahkan modal ke body, bukan ke container tertentu
             document.body.appendChild(modalOverlay);
+            console.log("Modal ditambahkan ke body");
 
             // Animasi muncul dengan shadow
             setTimeout(() => {
@@ -71,7 +81,7 @@ function openEditModal(url, type) {
             if (firstInput) firstInput.focus();
         })
         .catch((error) => {
-            console.error("Error loading modal:", error);
+            console.error("Error saat memuat modal:", error);
             alert(`Gagal memuat form ${type}. Silakan coba lagi.`);
         })
         .finally(() => {
@@ -148,7 +158,7 @@ function submitEditForm(form, type) {
         });
 }
 
-// Export fungsi
+// Export fungsi - Pastikan fungsi tersedia secara global
 window.openEditModal = openEditModal;
 window.closeEditModal = closeEditModal;
 window.submitEditForm = submitEditForm;

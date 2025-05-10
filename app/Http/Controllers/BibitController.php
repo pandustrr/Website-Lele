@@ -10,7 +10,7 @@ class BibitController extends Controller
     // Menampilkan form input
     public function create()
     {
-        return view('components.produksi.inputs.bibit-edit');
+        return view('components.produksi.modals.bibit-edit');
     }
 
     // Menyimpan data baru
@@ -43,7 +43,7 @@ class BibitController extends Controller
     public function edit($id)
     {
         $bibit = Bibit::findOrFail($id);
-        return view('components.produksi.inputs.bibit-edit', compact('bibit'));
+        return view('components.produksi.modals.bibit-edit', compact('bibit'));
     }
 
     // Update
